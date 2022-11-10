@@ -5,9 +5,39 @@ int m = InputNumbers("Введите колличество строк:  ");
 int n = InputNumbers("Введите колличество столбцов:  ");
 int range = InputNumbers("Введите диапазон массива от 1:  ");
 
+int InputNumbers(string input)
+{
+    Console.Write(input);
+    int output = Convert.ToInt32(Console.ReadLine());
+    return output;
+}
+
 int[,] array = new int[m, n];
 CreateArray(array);
 PrintArray(array);
+
+void CreateArray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++) // условие
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            array[i, j] = new Random().Next(range);
+        }
+    }
+}
+
+void PrintArray(int[,] array) //вывод массива
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write($"{array[i, j]}\t"); // массив в строчку
+        }
+        Console.WriteLine();
+    }
+}
 
 int minSumLine = 0;
 int sumLine = SumLineElements(array, 0);
@@ -33,32 +63,3 @@ int SumLineElements(int[,] array, int i)
     return sumLine;
 }
 
-int InputNumbers(string input)
-{
-    Console.Write(input);
-    int output = Convert.ToInt32(Console.ReadLine());
-    return output;
-}
-
-void CreateArray(int[,] array)
-{
-    for (int i = 0; i < array.GetLength(0); i++) // условие
-    {
-        for (int j = 0; j < array.GetLength(1); j++)
-        {
-            array[i, j] = new Random().Next(range);
-        }
-    }
-}
-
-void PrintArray(int[,] array) //вывод массива
-{
-    for (int i = 0; i < array.GetLength(0); i++)
-    {
-        for (int j = 0; j < array.GetLength(1); j++)
-        {
-            Console.Write($"{array[i, j]}\t"); // массив в строчку
-        }
-        Console.WriteLine();
-    }
-}
