@@ -1,9 +1,9 @@
 ﻿// Задайте прямоугольный двумерный массив. Напишите программу, 
 // которая будет находить строку с наименьшей суммой элементов.
 
-int m = InputNumbers("Введите колличество строк первой матрицы:  ");
-int n = InputNumbers("Введите колличество столбцов первой матрицы:  ");
-int range = InputNumbers("Введите диапазон матрицы от 1:  ");
+int m = InputNumbers("Введите колличество строк:  ");
+int n = InputNumbers("Введите колличество столбцов:  ");
+int range = InputNumbers("Введите диапазон массива от 1:  ");
 
 int[,] array = new int[m, n];
 CreateArray(array);
@@ -21,7 +21,7 @@ for (int i = 1; i < array.GetLength(0); i++)
     }    
 }
 
-Console.WriteLine($"\n{minSumLine+1} - строка с мин суммой ({sumLine}) элементов  ");
+Console.WriteLine($"\n{minSumLine+1} - строка с минимальной суммой ({sumLine}) элементов  ");
 
 int SumLineElements(int[,] array, int i)
 {
