@@ -1,17 +1,17 @@
 ﻿// Задайте две матрицы. Напишите программу, 
 // которая будет находить произведение двух матриц
 
+int m = InputNumbers("Введите колличество строк первой матрицы:  ");
+int n = InputNumbers("Введите колличество столбцов первой матрицы (строк второй матрицы):  ");
+int p = InputNumbers("Введите колличество столбцов второй матрицы:  ");
+int range = InputNumbers("Введите диапазон матрицы от 1:  ");
+
 int InputNumbers(string input)
 {
     Console.Write(input);
     int output = Convert.ToInt32(Console.ReadLine());
     return output;
 }
-
-int m = InputNumbers("Введите колличество строк первой матрицы:  ");
-int n = InputNumbers("Введите колличество столбцов первой матрицы (строк второй матрицы):  ");
-int p = InputNumbers("Введите колличество столбцов второй матрицы:  ");
-int range = InputNumbers("Введите диапазон матрицы от 1:  ");
 
 int[,] firstMatrix = new int[m, n];
 CreateArray(firstMatrix);
@@ -28,23 +28,6 @@ int[,] sumMatrix = new int[m, p];
 MultiMatrix(firstMatrix, secondMatrix, sumMatrix);
 Console.WriteLine($"Произведение матриц: ");
 PrintArray(sumMatrix);
-
-void MultiMatrix(int[,] firstMatrix, int[,] secondMatrix, int[,] sumMatrix)
-{
-    for (int i = 0; i < sumMatrix.GetLength(0); i++) 
-    {
-        for (int j = 0; j < sumMatrix.GetLength(1); j++)
-        {
-            int sum = 0;
-            for (int k = 0; k < firstMatrix.GetLength(1); k++)
-            {
-                sum += firstMatrix[i,k] * secondMatrix[k,j];
-            }
-            sumMatrix[i,j] = sum;
-        }
-    }
-}
-
 
 void CreateArray(int[,] array)
 {
@@ -66,5 +49,21 @@ void PrintArray(int[,] array) //вывод массива
             Console.Write($"{array[i, j]}\t"); // массив в строчку
         }
         Console.WriteLine();
+    }
+}
+
+void MultiMatrix(int[,] firstMatrix, int[,] secondMatrix, int[,] sumMatrix)
+{
+    for (int i = 0; i < sumMatrix.GetLength(0); i++) 
+    {
+        for (int j = 0; j < sumMatrix.GetLength(1); j++)
+        {
+            int sum = 0;
+            for (int k = 0; k < firstMatrix.GetLength(1); k++)
+            {
+                sum += firstMatrix[i,k] * secondMatrix[k,j];
+            }
+            sumMatrix[i,j] = sum;
+        }
     }
 }
